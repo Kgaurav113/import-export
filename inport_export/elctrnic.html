@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         #navbar{
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid black;
+            padding-left: 4%;
+            padding-right: 4%;
+            height: 50px;
+            
+        }
+        .options{
+            display: flex;
+            justify-content: space-between;
+            gap:40px;
+        }
+        #data{
+            display: grid;
+            grid-template-columns: repeat(4,20%);
+            grid-gap: 5%;
+            padding: 5px;
+        }
+        img{
+            width: 200px;
+            height: 200px;
+        }
+        
+        
+        </style>
+</head>
+<body>
+    <div id="header"></div>
+    <div id="data"></div>
+</body>
+</html>
+<script type="module">
+    import navbar from './componets/navbar.js';
+   //  console.log("navbar:",navbar)
+   import{getdata,append} from './scripts/fa.js'
+   let header=document.getElementById('header')
+   let parent=document.getElementById("data")
+   header.innerHTML=navbar()
+   let response=await getdata(`https://fakestoreapi.com/products/category/electronics`);
+   console.log("response",response)
+   append(response,parent)
+   
+   </script>
